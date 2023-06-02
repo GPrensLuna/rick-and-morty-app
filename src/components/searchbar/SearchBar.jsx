@@ -1,8 +1,9 @@
+import {DivSearch, InputSearch} from './searchbarStyle'
 export default function SearchBar({onSearch}) {
    return (
-      <div>
-          <input type='search' />
+      <DivSearch>
+          <InputSearch type='search' />
          <button onClick={onSearch}>Agregar</button> 
-      </div>
+      </DivSearch>
    );
 }

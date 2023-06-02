@@ -1,3 +1,60 @@
-.container {
-    border: 1px
+@font-face {
+  font-family: rick_and_morty_title;
+  src: url(../../assets/get_schwifty.ttf);
 }
+
+.card {
+    border: red solid 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+    border-radius: 2em;
+    font-family: 'Courier new', Courier, monospace;
+    width: 25em;
+    height: fit-content;
+    margin: 1.5em;
+    padding: 1.5em;
+    transform-style: preserve-3d;
+    transform: translateZ(-2em) rotateX(8deg);
+    
+  }
+  
+  .tilteName{
+    font-family: rick_and_morty_title;
+    padding: 1em;
+    
+  }
+
+.card button{
+  border-radius: 0.5em;
+  border: solid #18b909;
+  margin: 0.2em;
+  color:#ffff;
+  font-size: 3em;
+  font-weight: bold;
+  transform: transform 0.3 ease;
+}
+
+.card button:hover{
+  background-color: #18b909;
+  transform: scale(1.1);
+
+}
+
+.card h2 {
+  margin: 0.2em;
+}
+  
+  .card:hover{
+    padding: 20px;
+    transform-style: preserve-3d;
+    transform: translateZ(2em) rotateX(0deg);
+  }
+ 
+
+  /* background-image: url('../../assets/background-card.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-size: contain 100%; */
