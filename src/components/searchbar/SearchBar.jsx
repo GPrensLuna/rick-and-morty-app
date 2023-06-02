@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DivSearch, InputSearch, ButtonSearch } from './searchbarStyle';
 
 export default function SearchBar({onSearch}) {
+
+const[id, setId]=useState('')
+
+function handleChange(event){ 
+   setId(event.target.value)
+}
+
    return (
       <DivSearch>
-          <InputSearch type='search' />
-         <ButtonSearch onClick={onSearch}>Agregar</ButtonSearch> 
+         <ButtonSearch onClick={()=> onSearch(id)}>Agregar</ButtonSearch> 
+         <InputSearch type='search' onChange={handleChange} />
       </DivSearch>
    );
 };
+
+
+

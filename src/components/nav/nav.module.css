@@ -1,0 +1,21 @@
+
+.nav{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #f2d64b;
+    border: #9308a6;
+    padding: 10px;
+    border-radius: 2em;
+    margin: 1em 0em 1em 0em;
+    height: 4em;
+    width: 50vw;
+ 
+ }
+ 
+ nav a{
+    text-decoration: none;
+    color: inherit;
+ }
+ 
+ 

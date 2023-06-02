@@ -1,68 +1,74 @@
-@font-face {
-  font-family: rick_and_morty_title;
-  src: url(../../assets/get_schwifty.ttf);
+.card {
+  width: 300px;
+  border: solid #fff;
+  background-color: #f5f5f5;
+  border-radius: 8%;
+  padding: 20px;
+  text-align: center;
+  background-image: url('../../assets/background-card.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 20px;
 }
 
-.card {
-    border: #9308A6 solid 1px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2em;
-    border-radius: 2em;
-    font-family: 'Courier new', Courier, monospace;
-    width: 500px;
-    height: 800px;
-    margin: 2em;
-    padding: 0;
-    transform-style: preserve-3d;
-    transform: translateZ(-2em) rotateX(8deg);
-    
-  }
-  
-  .tilteName{
-    font-family: rick_and_morty_title;
-    padding: 1em;
-    
+.card:hover{
+    padding: 80px;
+    opacity: 100%;
+    /* background-image: url('ruta-del-archivo-de-sonido.mp3'); */
+    content: '';
   }
 
-.card button{
-  border-radius: 50%;
-  border: solid #05F2AF;
-  margin: 0.2em;
-  color:#F25C84;
+.back {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.back img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.back h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.name{
   font-size: 3em;
   font-weight: bold;
-  transform: transform 0.3 ease;
+  color: #333;
+  text-align: center;
+  margin: 10px;
+  background-color: #f5f5f5;
+  border-color: blue;
+  border-radius: 45%;
+  padding: 10px;
+
 }
 
-.card button:hover{
-  background-color: #9308A6;
-  transform: scale(1.1);
-
+.attribute {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-align: left;
+  background-color: #f5f5f5;
+  border-color: blue;
+  border-radius: 15%;
+  padding: 10px;
 }
 
-.card h2 {
-  margin: 0.2em;
+.attribute span {
+  font-weight: bold;
 }
-  
-  .card:hover{
-    padding: 20px;
-    transform-style: preserve-3d;
-    transform: translateZ(2em) rotateX(0deg);
-  }
 
-
-  .back{  
-    background-image: url('../../assets/background-card.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 70%;
-    width: 85%;
-    
-  }
-
-  .pjImg {
-      border-radius: 50%;
-  }
+.attribute p {
+  margin: 0;
+}
