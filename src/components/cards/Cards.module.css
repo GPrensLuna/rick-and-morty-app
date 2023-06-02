@@ -1,6 +1,6 @@
 .card{
     border:none;
-    border-radius: 2em;
+    border-radius: 50%;
     display: flex;
     padding: 10em;
     margin: 20px;
@@ -10,8 +10,9 @@
     width: 90vw;
     position: relative;
     &:hover{
-        background-color: rgb(12, 20, 69);
-        color:#ececec
+        background-color: #F25C84 ;
+        color:#B65CF2
     }
     
 }
+

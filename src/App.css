@@ -22,8 +22,8 @@ div .App {
    display: flex;
    justify-content: flex-end;
    align-items: center;
-   background-color: yellow;
-   border: red;
+   background-color: #f2d64b;
+   border: #9308a6;
    padding: 10px;
    border-radius: 2em;
    margin: 1em 0em 1em 0em;

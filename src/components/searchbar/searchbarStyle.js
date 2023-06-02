@@ -1,21 +1,27 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
 export const DivSearch = styled.div`
-    padding:1em;
-    display:flex;
-    justify-content:center;
-    ` 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+`;
+
 export const InputSearch = styled.input`
+  padding: 10px;
+  border: 1px solid #05f2af;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 300px;
+`;
 
-  border-radius: 0.5em;
-  background-color:#ececec;
-  padding:0.5em;
-  border: solid rgb(12, 20 ,69);
-  font-size:1em;
-  font-weight: 500;
-  &:hover{
-    background-color: rgb(12, 20 ,69);
-    color: #ececec;
-  }
+export const ButtonSearch = styled.button`
+  padding: 10px;
+  border: none;
+  background-color: #b65cf2;
+  color: #f2d64b;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+`;
 
-`

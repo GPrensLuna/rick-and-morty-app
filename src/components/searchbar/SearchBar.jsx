@@ -1,9 +1,11 @@
-import {DivSearch, InputSearch} from './searchbarStyle'
+import React from 'react';
+import { DivSearch, InputSearch, ButtonSearch } from './searchbarStyle';
+
 export default function SearchBar({onSearch}) {
    return (
       <DivSearch>
           <InputSearch type='search' />
-         <button onClick={onSearch}>Agregar</button> 
+         <ButtonSearch onClick={onSearch}>Agregar</ButtonSearch> 
       </DivSearch>
    );
-}
+};

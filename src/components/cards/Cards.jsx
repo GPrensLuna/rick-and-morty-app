@@ -6,6 +6,8 @@ export default function Cards({characters}) {
       return (
          <div className={Style.card}> 
          {characters.map(({id,name,status,species,gender,origin,image}) => (
+            <div className={Style.back}>
+
             <Card 
             key={id}
             name   = {name}
@@ -17,6 +19,7 @@ export default function Cards({characters}) {
             onClose={()=> window.alert('Emulamos que se cierra la card')}
             
             />
+            </div>   
          ))} </div>
        )
 }
