@@ -1,7 +1,7 @@
 import React from 'react';
 import style from "./Card.module.css";
 
-export default function Card({ onClose, name, status, species, gender, image, origin }) {
+export default function Card({ id, onClose, name, status, species, gender, image, origin }) {
   return (
     <div className={style.card}>
       <div className={style.back}>
@@ -26,7 +26,7 @@ export default function Card({ onClose, name, status, species, gender, image, or
           <span>Origin:</span>
           <p>{origin}</p>
         </div>
-        <button onClick={onClose}>X</button>
+        <button onClick={()=>onClose(id)}>X</button>
       </div>
     </div>
   );

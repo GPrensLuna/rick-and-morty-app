@@ -5,18 +5,19 @@ import Style from "./Cards.module.css"
 export default function Cards({characters}) {
       return (
          <div className={Style.card}> 
-         {characters.map(({id,name,status,species,gender,origin,image}) => (
+         {characters.map(({id,name,status,species,gender,origin,image,onclose}) => (
             <div className={Style.back}>
 
             <Card 
             key={id}
+            id={id}
             name   = {name}
             status = {status}
             species= {species}
             gender = {gender}
             origin = {origin.name}
             image  = {image}
-            onClose={()=> window.alert('Emulamos que se cierra la card')}
+            onClose={onclose}
             
             />
             </div>   
