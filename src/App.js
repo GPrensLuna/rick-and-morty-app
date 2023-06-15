@@ -1,15 +1,36 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { Route, Routes, useLocation, useNavigate} from "react-router-dom";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Cards from "./components/cards/Cards";
 import Nav from "./components/nav/Nav";
 import About from "./about/About";
 import { Detail } from "./components/Detail/Detail";
 import Error404 from "./components/Error404/Error404";
+import Form from "./components/form/Form";
 
 function App() {
+
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
   const [characters, setCharacters] = useState([]);
+  const [access , setAccess] = useState([]);
+
+  const EMAIL = 'GPrens@henrry.com'
+  const PASSWORD = "pass1234"
+
+  function login (email, password) {
+    if (!email === EMAIL && !password === PASSWORD) {
+      setAccess(true)
+      navigate("/home")
+    } else {
+      alert("Usuario o clave invalida");
+    }
+  }
+
+  useEffect(() => {
+    !access && navigate('/');
+  }, [access]);
 
   function onSearch(id) {
     axios(`https://rickandmortyapi.com/api/character/${id}`)
@@ -31,8 +52,11 @@ function App() {
 
   return (
     <div className="App" style={{ padding: "25px" }}>
-      <Nav onSearch={onSearch} />
+      {pathname !== "/" && <Nav onSearch={onSearch} />}
+
       <Routes>
+        <Route path="/" element={<Form login={login}/>}></Route>
+
         <Route
           path="/home"
           element={
