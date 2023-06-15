@@ -30,7 +30,7 @@ function App() {
 
   useEffect(() => {
     !access && navigate('/');
-  }, [access]);
+ }, [access]);
 
   function onSearch(id) {
     axios(`https://rickandmortyapi.com/api/character/${id}`)
