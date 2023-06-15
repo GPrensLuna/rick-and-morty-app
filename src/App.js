@@ -20,7 +20,7 @@ function App() {
   const PASSWORD = "pass1234"
 
   function login (email, password) {
-    if (!email === EMAIL && !password === PASSWORD) {
+    if (email === EMAIL && password === PASSWORD) {
       setAccess(true)
       navigate("/home")
     } else {
