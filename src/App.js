@@ -1,8 +1,12 @@
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import Cards from "./components/cards/Cards";
 import Nav from "./components/nav/Nav";
+import About from "./about/About";
+import { Detail } from "./components/Detail/Detail";
+import Error404 from "./components/Error404/Error404";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -18,7 +22,7 @@ function App() {
           alert(`Ya existe ese personaje con ese id ${id}`);
         }
       })
-      .catch(() => window.alert("¡No hay personajes con este ID!"));
+      .catch((err) => alert(err.response.data.error));
   }
 
   const onClose = (id) => {
@@ -28,10 +32,22 @@ function App() {
   return (
     <div className="App" style={{ padding: "25px" }}>
       <Nav onSearch={onSearch} />
+      <Routes>
+        <Route
+          path="/home"
+          element={
+            <div className="card">
+              <Cards characters={characters} onClose={onClose} />
+            </div>
+          }
+        ></Route>
 
-      <div className="card">
-        <Cards characters={characters} onClose={onClose} />
-      </div>
+        <Route path="/About" element={<About />}></Route>
+
+        <Route path="/detail/:id" element={<Detail />}></Route>
+
+        <Route path="*" element={<Error404 />}></Route>
+      </Routes>
     </div>
   );
 }
