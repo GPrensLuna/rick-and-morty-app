@@ -15,6 +15,11 @@ class Nav extends React.Component{
                     <NavLink to={'/home'}> 
                         <span>Home</span>
                     </NavLink>
+
+                    <NavLink to={'/favorites '}> 
+                        <span>Favorite</span>
+                    </NavLink>
+
                     <NavLink to={'/about'}> 
                         <span>About</span>
                     </NavLink>

@@ -1,8 +1,32 @@
 import React from 'react';
 import style from "./Card.module.css";
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addFav,removeFav } from '../../redux/actions/actions';
+import { useState, useEffect } from 'react';
 
-export default function Card({ id, onClose, name, status, species, gender, image, origin }) {
+ function Card({ id, onClose, name, status, species, gender, image, origin, addFav, removeFav, myFavorites}) {
+  
+  const [isFav, setIsFav] = useState(false)
+
+  useEffect(() => {
+   myFavorites.forEach((charFav) => {
+      if (charFav.id === id) {
+         setIsFav(true);
+      }
+   });
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [myFavorites]);
+
+  function handleFavorite(){
+    if(isFav){
+      setIsFav(false)
+      removeFav(id)
+    }else{
+      setIsFav(true)
+      addFav({ id, name, status, species, gender, origin, image })
+    } 
+  }
 
   return (
 
@@ -38,8 +62,36 @@ export default function Card({ id, onClose, name, status, species, gender, image
           <p>{origin}</p>
         </div>
 
+        {
+          isFav ? (
+          <button onClick={handleFavorite}>❤️</button>
+          ) : (
+          <button onClick={handleFavorite}>🤍</button>
+          )
+        }
+
         <button onClick={()=>onClose(id)}>X</button>
       </div>
     </div>
   );
 }
+
+export function mapDispatchToProps(dispatch){
+
+  return {
+    addFav: function(character){
+      dispatch(addFav(character));
+    },
+    removeFav: function(id){
+          dispatch(removeFav(id));
+    }
+  }
+}
+
+export function mapStateToProps(state){
+  return {
+    myFavorites: state.myFavorites,
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Card);

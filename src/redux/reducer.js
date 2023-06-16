@@ -1,25 +1,25 @@
-import { ADD_FAV, REMOVE_FAV } from './actions/actions_types';
+import { ADD_FAV, REMOVE_FAV } from "./actions/actions_types";
 
 const initialState = { 
-    myFavorites: [],
+    myFavorites: []
 };
 
-function rootReducer( state = initialState, action, type, payload) {
+function rootReducer( state = initialState, type, payload) {
     switch (type) {
-      case "ADD_FAV":
+      case ADD_FAV:
         return {
           ...state,
           myFavorites: [...state.myFavorites, payload],
         };
-      case "REMOVE_FAV":
+      case REMOVE_FAV:
         return {
           ...state,
           myFavorites: state.myFavorites.filter(
-            char => char.id !== payload
-          )
+            (char) => char.id !== payload
+          ),
         };
       default:
-        return[ ...state];
+        return {...state};
     }
 }
 
