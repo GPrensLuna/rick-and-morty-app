@@ -6,17 +6,17 @@ import { useState, useEffect } from 'react'
 export const Detail = () => {
     const {id}= useParams();
 
-    const [characterDetail, setcharacterDetail] = useState({})
+    const [characterDetail, setCharacterDetail] = useState({})
 
     useEffect(() => {
         axios(`https://rickandmortyapi.com/api/character/${id}`).then(({data}) =>{
             if(data.name){
-                setcharacterDetail(data)
+                setCharacterDetail(data)
             }else{
                 alert("No character found")
             }
         })
-        return setcharacterDetail({})
+        return setCharacterDetail({})
     },[id])
 
 
@@ -24,12 +24,12 @@ export const Detail = () => {
     <div>
         [characterDetail ? (
             <div>
-                <h2>Name: {characterDetail.name}</h2>
-                <h4>Status: {characterDetail.status}</h4>
-                <h4>Species: {characterDetail.species}</h4>
-                <h4>Gender {characterDetail.gender}</h4>
-                <h4>Origin: {characterDetail.origin?.name}</h4>
-                <img src={characterDetail.image} alt={characterDetail.name} />
+                <h2>Name: {characterDetail.name} </h2>
+                <h4>Status: {characterDetail.status} </h4>
+                <h4>Species: {characterDetail.species} </h4>
+                <h4>Gender: {characterDetail.gender} </h4>
+                <h4>Origin: {characterDetail.origin?.name} </h4>
+                <img src= {characterDetail.image} alt={characterDetail.name} />
             </div>
         ):""]
     </div>

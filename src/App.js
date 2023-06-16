@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./App.css";
 import { Route, Routes, useLocation, useNavigate} from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -13,14 +14,14 @@ function App() {
 
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const [characters, setCharacters] = useState([]);
+  const [characters, setCharacters] = useState([false]);
   const [access , setAccess] = useState([]);
 
   const EMAIL = 'GPrens@henrry.com'
   const PASSWORD = "pass1234"
 
   function login (email, password) {
-    if (email === EMAIL && password === PASSWORD) {
+    if (password === PASSWORD && email === EMAIL) {
       setAccess(true)
       navigate("/home")
     } else {
@@ -52,7 +53,7 @@ function App() {
 
   return (
     <div className="App" style={{ padding: "25px" }}>
-      {pathname !== "/" && <Nav onSearch={onSearch} />}
+      {pathname !== '/' && <Nav onSearch={onSearch}/>}
 
       <Routes>
         <Route path="/" element={<Form login={login}/>}></Route>
