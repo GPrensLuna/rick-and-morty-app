@@ -1,33 +1,32 @@
 import React from "react";
 import NavLink from "../NavLink/NavLink";
-import SearchBar from "../searchbar/SearchBar";
+import SearchBar from "../searchbar/SearchBar.jsx";
 import style from "./nav.module.css";
 
+class Nav extends React.Component {
+  constructor(props) {
+    super();
+  }
 
-class Nav extends React.Component{
-    constructor(props){
-        super()
-    }
+  render() {
+    return (
+      <nav className={style.nav}>
+        <NavLink to={"/home"}>
+          <span>Home</span>
+        </NavLink>
 
-    render(){
-        return  <nav className={style.nav}> 
+        <NavLink to={"/favorites "}>
+          <span>Favorite</span>
+        </NavLink>
 
-                    <NavLink to={'/home'}> 
-                        <span>Home</span>
-                    </NavLink>
+        <NavLink to={"/about"}>
+          <span>About</span>
+        </NavLink>
 
-                    <NavLink to={'/favorites '}> 
-                        <span>Favorite</span>
-                    </NavLink>
-
-                    <NavLink to={'/about'}> 
-                        <span>About</span>
-                    </NavLink>
-
-                    <SearchBar onSearch={this.props.onSearch} />     
-                </nav>
-        
-    }
+        <SearchBar onSearch={this.props.onSearch} />
+      </nav>
+    );
+  }
 }
 
 export default Nav;

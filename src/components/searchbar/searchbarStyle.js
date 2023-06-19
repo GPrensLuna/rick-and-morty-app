@@ -11,7 +11,7 @@ export const DivSearch = styled.div`
 export const InputSearch = styled.input`
   padding: 10px;
   border: 1px solid #05f2af;
-  background-color:#B65CF2
+  background-color:#B65CF2;
   border-radius: 5px;
   font-size: 16px;
   width: 300px;
