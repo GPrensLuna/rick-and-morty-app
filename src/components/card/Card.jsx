@@ -1,9 +1,8 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import style from "./Card.module.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { addFav, removeFav } from "../../redux/actions/actions.js";
-import { useState, useEffect } from "react";
 
 function Card({
   id,
@@ -21,8 +20,8 @@ function Card({
   const [isFav, setIsFav] = useState(false);
 
   useEffect(() => {
-    myFavorites.forEach((charFav) => {
-      if (charFav.id === id) {
+    myFavorites.forEach((fav) => {
+      if (fav.id === id) {
         setIsFav(true);
       }
     });
@@ -82,21 +81,25 @@ function Card({
   );
 }
 
-export function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
-    addFav: function (character) {
+    addFav: (character) => {
       dispatch(addFav(character));
     },
-    removeFav: function (id) {
+    removeFav: (id) => {
       dispatch(removeFav(id));
     },
   };
-}
+};
 
-export function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     myFavorites: state.myFavorites,
   };
-}
-
+};
 export default connect(mapStateToProps, mapDispatchToProps)(Card);
+
+
+
+
+

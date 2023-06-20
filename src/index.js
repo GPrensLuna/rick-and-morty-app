@@ -4,8 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import "./index.css";
 import "./assets/normalize.css";
-import App from "./App";
-import store from "./redux/store"
+import App from "./App.js";
+import store from "./redux/store.js"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

@@ -4,7 +4,8 @@ const initialState = {
   myFavorites: [],
 };
 
-function rootReducer(state = initialState, type, payload) {
+function rootReducer(state = initialState, action) {
+  const { type, payload } = action;
   switch (type) {
     case ADD_FAV:
       return {
@@ -14,7 +15,7 @@ function rootReducer(state = initialState, type, payload) {
     case REMOVE_FAV:
       return {
         ...state,
-        myFavorites: state.myFavorites.filter((char) => char.id !== payload),
+        myFavorites: state.myFavorites.filter(fav => fav.id !== payload),
       };
     default:
       return { ...state };
@@ -22,3 +23,6 @@ function rootReducer(state = initialState, type, payload) {
 }
 
 export default rootReducer;
+
+
+

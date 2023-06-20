@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import Card from "../card/Card";
+import Card from "../card/Card.jsx";
 
 function Favorites({ myFavorites }) {
   return (
     <div>
-      {myFavorites.map(
-        ({ id, name, status, species, gender, origin, image }) => (
+      {myFavorites.map(({ id, name, status, species, gender, origin, image }) => {
+        return (
           <Card
             key={id}
             id={id}
@@ -14,19 +14,21 @@ function Favorites({ myFavorites }) {
             status={status}
             species={species}
             gender={gender}
-            origin={origin.name}
+            origin={origin} 
             image={image}
           />
-        )
-      )}
+        );
+      })}
     </div>
   );
 }
 
-export function maspStateToProps(state) {
+export function mapStateToProps(state) {
   return {
     myFavorites: state.myFavorites,
   };
 }
 
-export default connect(maspStateToProps)(Favorites);
+export default connect(mapStateToProps)(Favorites);
+
+
