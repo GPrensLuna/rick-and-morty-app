@@ -7,12 +7,13 @@ import { useState, useEffect } from "react";
 
 function Card({
   id,
-  onClose,
   name,
   status,
   species,
   gender,
   image,
+  origin,
+  onClose,
   addFav,
   removeFav,
   myFavorites,
@@ -66,7 +67,7 @@ function Card({
 
         <div className={style.attribute}>
           <span>Origin:</span>
-          <p>{origin}</p>
+          <p>{origin.name}</p>
         </div>
 
         {isFav ? (

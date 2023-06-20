@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import Card from "../card/Card.jsx";
+import Card from "../card/Card";
 
 function Favorites({ myFavorites }) {
   return (

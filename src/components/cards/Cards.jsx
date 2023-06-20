@@ -6,21 +6,19 @@ export default function Cards({ characters }) {
     <div className={Style.card}>
       {characters.map(
         ({ id, name, status, species, gender, origin, image, onClose }) => (
-          <div className={Style.back}>
-            <Card
-              key={id}
-              id={id}
-              name={name}
-              status={status}
-              species={species}
-              gender={gender}
-              origin={origin}
-              image={image}
-              onClose={onClose}
-            />
-          </div>
+          <Card
+            key={id}
+            id={id}
+            name={name}
+            status={status}
+            species={species}
+            gender={gender}
+            origin={origin.name}
+            image={image}
+            onClose={onClose}
+          />
         )
-      )}{" "}
+      )}
     </div>
   );
 }
