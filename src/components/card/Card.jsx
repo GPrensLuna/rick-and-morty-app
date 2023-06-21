@@ -50,6 +50,11 @@ function Card({
         </Link>
 
         <div className={style.attribute}>
+          <span>ID:</span>
+          <p>{id}</p>
+        </div>
+
+        <div className={style.attribute}>
           <span>Status:</span>
           <p>{status}</p>
         </div>
@@ -66,7 +71,7 @@ function Card({
 
         <div className={style.attribute}>
           <span>Origin:</span>
-          <p>{origin.name}</p>
+          <p>{origin}</p>
         </div>
 
         {isFav ? (
@@ -98,8 +103,3 @@ const mapStateToProps = (state) => {
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Card);
-
-
-
-
-
