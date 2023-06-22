@@ -1,5 +1,5 @@
 const http = require("http");
-const data = require("./utils/data.js");
+const getChartById = require("./controlers/getChartById");
 
 http
   .createServer((req, res) => {
