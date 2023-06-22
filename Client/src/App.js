@@ -34,14 +34,14 @@ function App() {
   }, [access]);
 
   function onSearch(id) {
-    axios(`https://rickandmortyapi.com/api/character/${id}`)
+    axios(`http://localhost:3001/rickandmorty/character/${id}`)
       .then(({ data }) => {
         if (!characters.find((char) => char.id === data.id)) {
           if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]); // Agregar el personaje a la lista de personajes si no existe previamente
           }
         } else {
-          window.alert(`Ya existe ese personaje con ese ID`); // Alerta si el personaje ya existe en la lista
+          window.alert(`Ya existe ese personaje con ese ID: ${id}`); // Alerta si el personaje ya existe en la lista
         }
       })
       .catch((err) => alert(err.response.data.error)); // Alerta si ocurre un error en la solicitud HTTP
