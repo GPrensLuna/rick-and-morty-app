@@ -1,5 +1,5 @@
 const http = require("http");
-const getChartById = require("./controlers/getChartById");
+const getChartById = require("./controllers/getChartById");
 
 http
   .createServer((req, res) => {
@@ -7,16 +7,8 @@ http
 
     const { url } = req;
     if (url.includes("/rickandmorty/character")) {
-      const id = url.split("/").at(-1);
-      const character = data.find((char) => char.id === parseInt(id));
-
-      if (character) {
-        res.writeHead(200, { "Content-Type": "application/json" });
-        return res.end(JSON.stringify(character));
-      } else {
-        res.writeHead(404, { "Content-Type": "application/json" });
-        return res.end(JSON.stringify({ error: "Character not found" }));
-      }
+      const id = url.split("/").pop(); // Obtener el último elemento del array
+      getChartById(res, id); // Pasar 'res' como primer argumento
     }
   })
   .listen(3001, "localhost");

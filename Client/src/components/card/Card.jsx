@@ -17,9 +17,10 @@ function Card({
   removeFav,
   myFavorites,
 }) {
-  const [isFav, setIsFav] = useState(false);
+  const [isFav, setIsFav] = useState(false); // Estado para rastrear si la tarjeta es favorita
 
   useEffect(() => {
+    // Verificar si la tarjeta actual es una de las favoritas
     myFavorites.forEach((fav) => {
       if (fav.id === id) {
         setIsFav(true);
@@ -30,11 +31,11 @@ function Card({
 
   function handleFavorite() {
     if (isFav) {
-      setIsFav(false);
-      removeFav(id);
+      setIsFav(false); // Cambiar el estado de isFav a false
+      removeFav(id); // Llamar a la acción removeFav para eliminar la tarjeta de favoritos
     } else {
-      setIsFav(true);
-      addFav({ id, name, status, species, gender, origin, image });
+      setIsFav(true); // Cambiar el estado de isFav a true
+      addFav({ id, name, status, species, gender, origin, image }); // Llamar a la acción addFav para agregar la tarjeta a favoritos
     }
   }
 
@@ -89,17 +90,18 @@ function Card({
 const mapDispatchToProps = (dispatch) => {
   return {
     addFav: (character) => {
-      dispatch(addFav(character));
+      dispatch(addFav(character)); // Llamar a la acción addFav y pasar el personaje como argumento
     },
     removeFav: (id) => {
-      dispatch(removeFav(id));
+      dispatch(removeFav(id)); // Llamar a la acción removeFav y pasar el ID del personaje como argumento
     },
   };
 };
 
 const mapStateToProps = (state) => {
   return {
-    myFavorites: state.myFavorites,
+    myFavorites: state.myFavorites, // Mapear el estado myFavorites de Redux a las propiedades del componente
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(Card);
