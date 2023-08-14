@@ -3,36 +3,40 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-export const Detail = () => {
-  const { id } = useParams();
+export  const Detail = () => {
+const { id } = useParams();
 
-  const [characterDetail, setCharacterDetail] = useState({});
+  const [characterDetail, setCharacter] = useState({});
 
   useEffect(() => {
-    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
-      ({ data }) => {
+    axios(`http://localhost:3001/rickandmorty/character/${id}`)
+      .then(({ data }) => {
         if (data.name) {
-          setCharacterDetail(data);
-        } else {
-          alert("No character found");
+          setCharacter(data);
         }
-      }
-    );
-    return setCharacterDetail({});
+      })
+      .catch((error) => window.alert(error.response.data.error));
+
+    return setCharacter({});
   }, [id]);
 
   return (
-    <div>
-      [characterDetail ? (
-      <div>
-        <h2>Name: {characterDetail.name} </h2>
-        <h4>Status: {characterDetail.status} </h4>
-        <h4>Species: {characterDetail.species} </h4>
-        <h4>Gender: {characterDetail.gender} </h4>
-        <h4>Origin: {characterDetail.origin?.name} </h4>
-        <img src={characterDetail.image} alt={characterDetail.name} />
+<div >
+      <div >
+        <h1>{characterDetail.name}</h1>
+        <img
+          src={characterDetail.image}
+          alt={`${characterDetail.name}`}
+        />
       </div>
-      ):""]
+      {characterDetail.name && (
+        <div >
+          <h2>STATUS: {characterDetail.status}</h2>
+          <h2>SPECIES: {characterDetail.species}</h2>
+          <h2>GENDER: {characterDetail.gender}</h2>
+          <h2>ORIGIN: {characterDetail.origin}</h2>
+        </div>
+      )}
     </div>
   );
 };

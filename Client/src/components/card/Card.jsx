@@ -4,7 +4,7 @@ import { addFav, removeFav } from "../../redux/actions/actions.js";
 import { connect } from "react-redux";
 import { useState, useEffect } from "react";
 
-function Card({
+export function Card({
   id,
   name,
   status,
