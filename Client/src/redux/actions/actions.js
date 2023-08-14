@@ -5,7 +5,7 @@ const URL = "http://localhost:3001/rickandmorty/fav";
 
 export const addFav = (character) => {
   return function (dispatch) {
-    return axios.post(`${URL}`, character).then(({ data }) => {
+    return axios(`${URL}`, character).then(({ data }) => {
       return dispatch({
         type: ADD_FAV,
         payload: data,
@@ -14,10 +14,16 @@ export const addFav = (character) => {
   };
 };
 
-export const removeFav = (id) => ({
-  type: REMOVE_FAV,
-  payload: id,
-});
+export const removeFav = (id) => {
+  return (dispatch) => {
+    return axios(`${URL}/${id}`).then(({ data }) => {
+      return dispatch({
+        type: REMOVE_FAV,
+        payload: data,
+      });
+    });
+  };
+};
 
 export const filterFav = (gender) => {
   return {
