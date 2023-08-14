@@ -1,76 +1,60 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Card from "../card/Card.jsx";
+//import styled from 'styled-components';
 import {
   orderCards,
   filterFav,
-  removeFav,
 } from "../../redux/actions/actions.js";
-import { useDispatch } from "react-redux";
-import Card from "../card/Card.jsx";
+import { useState } from 'react';
 
-function Favorites({ myFavorites }) {
+
+
+const Favorites = () => {
+  const [aux, setAux] = useState(false);
   const dispatch = useDispatch();
+  const myFavorites = useSelector((state) => state.myFavorites);
 
-  // Manejador de eventos para cambiar el orden de las tarjetas
-  const handleOrder = function (evento) {
-    dispatch(orderCards(evento.target.value));
+  const handleOrder = (e) => {
+    dispatch(orderCards(e.target.value));
+    setAux(!aux);
   };
 
-  // Manejador de eventos para filtrar las tarjetas favoritas
-  const handleFilter = (evento) => {
-    dispatch(filterFav(evento.target.value));
-  };
-
-  // Función para manejar el cierre de una tarjeta favorita
-  const onClose = (id) => {
-    dispatch(removeFav(id)); // Despachar la acción para eliminar la tarjeta de favoritos por su ID
+  const handleFilter = (e) => {
+    dispatch(filterFav(e.target.value));
   };
 
   return (
     <div>
       <div>
-        {/* Select para cambiar el orden de las tarjetas */}
-        <select name="order" onChange={handleOrder}>
-          <option value="A">A</option>
-          <option value="D">D</option>
+        <select onChange={handleOrder}>
+          <option value='A'>Ascendente</option>
+          <option value='D'>Descendente</option>
         </select>
-        {/* Select para filtrar las tarjetas favoritas */}
-        <select name="filter" onChange={handleFilter}>
-          <option value="All">All</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Genderless">Genderless</option>
-          <option value="unknown">unknown</option>
+        <select onChange={handleFilter}>
+          <option value='Male'>Male</option>
+          <option value='Female'>Female</option>
+          <option value='Genderless'>Genderless</option>
+          <option value='unknown'>Unknown</option>
         </select>
       </div>
-      <div>
-        {/* Renderizar las tarjetas favoritas */}
-        {myFavorites.map(
-          ({ id, name, status, species, gender, origin, image }) => {
-            return (
-              <Card
-                key={id}
-                id={id}
-                name={name}
-                status={status}
-                species={species}
-                gender={gender}
-                origin={origin.name}
-                image={image}
-                onClose={onClose}
-              />
-            );
-          }
-        )}
-      </div>
+      <>
+        {myFavorites?.map((fav) => (
+          <Card
+            id={fav.id}
+            key={fav.id}
+            name={fav.name}
+            species={fav.species}
+            status={fav.status}
+            origin={fav.origin}
+            gender={fav.gender}
+            image={fav.image}
+          />
+        ))}
+      </>
     </div>
   );
-}
+};
 
-export function mapStateToProps(state) {
-  return {
-    myFavorites: state.myFavorites,
-  };
-}
+export default Favorites;
 
-export default connect(mapStateToProps)(Favorites);

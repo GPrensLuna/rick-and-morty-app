@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
 import style from "./Card.module.css";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 import { addFav, removeFav } from "../../redux/actions/actions.js";
+import { connect } from "react-redux";
+import { useState, useEffect } from "react";
 
 function Card({
   id,
@@ -29,15 +29,25 @@ function Card({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [myFavorites]);
 
-  function handleFavorite() {
+   const handleFavorite = () => {
+    let character = {
+      id,
+      name,
+      status,
+      species,
+      gender,
+      origin,
+      image,
+    };
+
     if (isFav) {
-      setIsFav(false); // Cambiar el estado de isFav a false
-      removeFav(id); // Llamar a la acción removeFav para eliminar la tarjeta de favoritos
+      setIsFav(false);
+      removeFav(id);
     } else {
-      setIsFav(true); // Cambiar el estado de isFav a true
-      addFav({ id, name, status, species, gender, origin, image }); // Llamar a la acción addFav para agregar la tarjeta a favoritos
+      setIsFav(true);
+      addFav(character);
     }
-  }
+  };
 
   return (
     <div className={style.card}>

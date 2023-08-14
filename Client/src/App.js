@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Cards from "./components/cards/Cards.jsx";
 import Nav from "./components/nav/Nav.jsx";
-import About from "./about/About.jsx";
+import About from "./components/about/About.jsx";
 import { Detail } from "./components/Detail/Detail.jsx";
 import Error404 from "./components/Error404/Error404.jsx";
 import Form from "./components/form/Form.jsx";
@@ -48,9 +48,7 @@ function App() {
 
   async function onSearch(id) {
     try {
-      const { data } = await axios(
-        `http://localhost:3001/rickandmorty/character/${id}`
-      );
+      const { data } = await axios(`${URL}/character/${id}`);
       if (data.name) {
         setCharacters((oldChars) => [...oldChars, data]);
       }
