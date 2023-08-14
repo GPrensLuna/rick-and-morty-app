@@ -1,4 +1,4 @@
-const user = require("../utils/users");
+const users = require('../utils/users');
 
 module.exports = (req, res) => {
   const { email, password } = req.query;
@@ -8,8 +8,8 @@ module.exports = (req, res) => {
   );
 
   if (user) {
-    return res.status(204).json({ access: true });
+    return res.status(200).json({ access: true });
+  } else {
+    return res.status(403).json({ access: false });
   }
-
-  return res.status(403).json({ access: false });
 };

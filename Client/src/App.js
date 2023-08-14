@@ -17,43 +17,59 @@ function App() {
   const [access, setAccess] = useState(false);
   const [characters, setCharacters] = useState([]); // Estado para almacenar los personajes y el estado de acceso
 
-  const URL = "http://localhost:3001/rickandmorty/";
-
-  function login({ email, password }) {
-    axios(`${URL}login?email=${email}&password=${password}`).then(
-      ({ data }) => {
-        const { access } = data;
-        setAccess(access);
-        access && navigate("/home");
-      }
-    );
-  }
-
   useEffect(() => {
     !access && navigate("/"); // Redirigir al usuario a la página de inicio de sesión si no ha iniciado sesión
   }, [access]);
 
-  const onSearch = async (id) => {
-    if (!id) alert("Ingrese un ID");
-    if (characters.find((char) => char.id == parseInt(id))) {
-      return window.alert(`Ya existe ese personaje con ese ID: ${id}`); // Alerta si el personaje ya existe en la lista
-    }
-    axios(`http://localhost:3001/rickandmorty/character/${id}`)
-      .then(({ data }) => {
-        if (data.name) {
-          setCharacters((oldChars) => [...oldChars, data]); // Agregar el personaje a la lista de personajes si no existe previamente
-        }
-      })
-      .catch((err) => alert(err.response.data.error)); // Alerta si ocurre un error en la solicitud HTTP
-  };
+  const URL = "http://localhost:3001/rickandmorty/";
 
-  const onClose = (id) => {
-    setCharacters(characters.filter((char) => char.id !== Number(id))); // Eliminar un personaje de la lista por su ID
-  };
+  async function login(userData) {
+    const { email, password } = userData;
+
+    try {
+      const { data } = await axios(
+        `${URL}login?email=${email}&password=${password}`
+      );
+
+      const { access } = data;
+
+      setAccess(access);
+
+      access && navigate("/home");
+    } catch (error) {
+      window.alert(error.message);
+    }
+  }
+
+  function logout() {
+    setAccess(false);
+    navigate("/");
+  }
+
+  async function onSearch(id) {
+    try {
+      const { data } = await axios(
+        `http://localhost:3001/rickandmorty/character/${id}`
+      );
+      if (data.name) {
+        setCharacters((oldChars) => [...oldChars, data]);
+      }
+    } catch (error) {
+      window.alert(error.message);
+    }
+  }
+
+  function onClose(id) {
+    const newCharacters = characters.filter(
+      (character) => character.id !== Number(id)
+    );
+
+    setCharacters(newCharacters);
+  }
 
   return (
     <div className="App" style={{ padding: "25px" }}>
-      {pathname !== "/" && <Nav onSearch={onSearch} />}{" "}
+      {pathname !== "/" && <Nav onSearch={onSearch} logout={logout} />}{" "}
       {/* Mostrar el componente de navegación en todas las rutas excepto en la página de inicio de sesión */}
       <Routes>
         <Route path="/" element={<Form login={login} />}></Route>{" "}
