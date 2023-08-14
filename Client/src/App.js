@@ -17,16 +17,16 @@ function App() {
   const [access, setAccess] = useState(false);
   const [characters, setCharacters] = useState([]); // Estado para almacenar los personajes y el estado de acceso
 
-  const EMAIL = "GPrens@henrry.com"; // Correo electrónico esperado para iniciar sesión
-  const PASSWORD = "pass1234"; // Contraseña esperada para iniciar sesión
+  const URL = "http://localhost:3001/rickandmorty/";
 
-  function login(userData) {
-    if (userData.password === PASSWORD && userData.email === EMAIL) {
-      setAccess(true); // Establecer el estado de acceso a true si las credenciales son correctas
-      navigate("/home"); // Redirigir al usuario a la página de inicio
-    } else {
-      alert("Usuario o clave invalida"); // Alerta si las credenciales son incorrectas
-    }
+  function login({ email, password }) {
+    axios(`${URL}login?email=${email}&password=${password}`).then(
+      ({ data }) => {
+        const { access } = data;
+        setAccess(access);
+        access && navigate("/home");
+      }
+    );
   }
 
   useEffect(() => {

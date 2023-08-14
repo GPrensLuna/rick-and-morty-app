@@ -1,9 +1,16 @@
 import { ADD_FAV, REMOVE_FAV, FILTER, ORDER } from "./actions_types.js";
+import axios from "axios";
 
-export const addFav = (payload) => {
-  return {
-    type: ADD_FAV,
-    payload,
+const URL = "http://localhost:3001/rickandmorty/fav";
+
+export const addFav = (character) => {
+  return function (dispatch) {
+    return axios.post(`${URL}`, character).then(({ data }) => {
+      return dispatch({
+        type: ADD_FAV,
+        payload: data,
+      });
+    });
   };
 };
 
