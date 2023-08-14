@@ -33,9 +33,9 @@ function App() {
     !access && navigate("/"); // Redirigir al usuario a la página de inicio de sesión si no ha iniciado sesión
   }, [access]);
 
-  function onSearch(id) {
-    // eslint-disable-next-line eqeqeq
-    if (characters.find((char) => char.id == id)) {
+  const onSearch = async (id) => {
+    if (!id) alert("Ingrese un ID");
+    if (characters.find((char) => char.id == parseInt(id))) {
       return window.alert(`Ya existe ese personaje con ese ID: ${id}`); // Alerta si el personaje ya existe en la lista
     }
     axios(`http://localhost:3001/rickandmorty/character/${id}`)
@@ -45,7 +45,7 @@ function App() {
         }
       })
       .catch((err) => alert(err.response.data.error)); // Alerta si ocurre un error en la solicitud HTTP
-  }
+  };
 
   const onClose = (id) => {
     setCharacters(characters.filter((char) => char.id !== Number(id))); // Eliminar un personaje de la lista por su ID

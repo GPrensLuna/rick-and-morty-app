@@ -1,14 +1,14 @@
-const http = require("http");
-const getChartById = require("./controllers/getChartById");
+const express = require("express");
+const morgan = require("morgan");
+const cors = require("cors");
 
-http
-  .createServer((req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
+const server = express();
 
-    const { url } = req;
-    if (url.includes("/rickandmorty/character")) {
-      const id = url.split("/").pop(); // Obtener el último elemento del array
-      getChartById(res, id); // Pasar 'res' como primer argumento
-    }
-  })
-  .listen(3001, "localhost");
+const PORT = 3001;
+
+server.use(morgan("dev"));
+server.use(cors());
+
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

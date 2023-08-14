@@ -1,24 +1,21 @@
 const axios = require("axios");
+const errorHandler = require("../utils/errors");
 
 const URL_BASE = `https://rickandmortyapi.com/api/character`;
 
-const fullfiled = (response, res) => {
-  const { id, name, status, species, gender, origin, image } = response.data;
-  res.writeHead(200, { "Content-Type": "application/json" });
-  res.end(JSON.stringify({ id, name, status, species, gender, origin, image }));
-};
+const getChartById = async (req, res) => {
+  const { id } = req.params;
 
-const rejected = (err, res) => {
-  res.writeHead(500, { "Content-Type": "text/plain" });
-  res.end(err.message);
-};
-const getChartById = (res, id) => {
-  axios
-    .get(`${URL_BASE}/${id}`)
-    .then((response) => fullfiled(response, res))
-    .catch(function (err) {
-      rejected(err, res);
-    });
+  try {
+    const response = await axios(`${URL_BASE$}${id}`);
+    const { name, species, status, origin, image, gender } = response.data;
+
+    const character = { id, name, species, status, origin, image, gender };
+
+    res.status(200).json(character);
+  } catch (error) {
+    errorHandler(error, res);
+  }
 };
 
 module.exports = getChartById;
