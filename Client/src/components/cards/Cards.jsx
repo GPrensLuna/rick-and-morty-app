@@ -1,7 +1,7 @@
 import Card from "../card/Card.jsx";
 import Style from "./Cards.module.css";
 
-export default function Cards({ characters, onClose }) {
+export default function Cards({ characters , onClose }) {
   return (
     <div className={Style.card}>
       {characters.map(
@@ -13,7 +13,7 @@ export default function Cards({ characters, onClose }) {
             status={status}
             species={species}
             gender={gender}
-            origin={origin.name}
+            origin={origin}
             image={image}
             onClose={onClose}
           />

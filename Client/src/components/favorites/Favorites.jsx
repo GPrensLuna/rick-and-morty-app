@@ -7,6 +7,7 @@ import {
   filterFav,
 } from "../../redux/actions/actions.js";
 import { useState } from 'react';
+import "./Favorites.css";
 
 
 
@@ -25,32 +26,34 @@ const Favorites = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div className="conten">
+      <div className="contenOp">
         <select onChange={handleOrder}>
-          <option value='A'>Ascendente</option>
-          <option value='D'>Descendente</option>
+          <option value="A">Ascendente</option>
+          <option value="D">Descendente</option>
         </select>
         <select onChange={handleFilter}>
-          <option value='Male'>Male</option>
-          <option value='Female'>Female</option>
-          <option value='Genderless'>Genderless</option>
-          <option value='unknown'>Unknown</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Genderless">Genderless</option>
+          <option value="unknown">Unknown</option>
         </select>
       </div>
       <>
-        {myFavorites?.map((fav) => (
-          <Card
-            id={fav.id}
-            key={fav.id}
-            name={fav.name}
-            species={fav.species}
-            status={fav.status}
-            origin={fav.origin}
-            gender={fav.gender}
-            image={fav.image}
-          />
-        ))}
+        {myFavorites?.map(
+          ({ id, name, status, species, gender, origin, image }) => (
+            <Card
+              id={id}
+              key={id}
+              name={name}
+              species={species}
+              status={status}
+              origin={origin}
+              gender={gender}
+              image={image}
+            />
+          )
+        )}
       </>
     </div>
   );

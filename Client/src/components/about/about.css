@@ -1,0 +1,9 @@
+.about {
+margin: 20px;
+padding: 20px;
+color: #ffffff;
+background: transparent;
+border: 2px solid rgba(255, 255, 255, .5);
+border-radius: 20px;
+backdrop-filter: blur(20px);
+}

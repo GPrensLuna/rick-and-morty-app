@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+ /* eslint-disable react-hooks/exhaustive-deps */
 import "./App.css";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -57,7 +57,7 @@ function App() {
     }
   }
 
-  function onClose(id) {
+function onClose(id) {
     const newCharacters = characters.filter(
       (character) => character.id !== Number(id)
     );

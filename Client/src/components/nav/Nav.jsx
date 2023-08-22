@@ -15,7 +15,7 @@ class Nav extends React.Component {
           <span>Home</span>
         </NavLink>
 
-        <NavLink to={"/favorites "}>
+        <NavLink to={"/favorites"}>
           <span>Favorite</span>
         </NavLink>
 
@@ -24,6 +24,10 @@ class Nav extends React.Component {
         </NavLink>
 
         <SearchBar onSearch={this.props.onSearch} />
+
+        <NavLink to={"/"}>
+          <span>Cerrar</span>
+        </NavLink>
       </nav>
     );
   }

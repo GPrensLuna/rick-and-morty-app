@@ -10,12 +10,12 @@ export const DivSearch = styled.div`
 
 export const InputSearch = styled.input`
   padding: 10px;
-  border: 1px solid #05f2af;
-  background-color:#B65CF2;
+  background-color: transparent;
   border-radius: 5px;
   font-size: 16px;
   width: 300px;
-  
+  color: #ffffff;
+
   &:focus {
     outline: none;
   }
@@ -23,9 +23,10 @@ export const InputSearch = styled.input`
 
 export const ButtonSearch = styled.button`
   padding: 10px;
-  border: #9308A6;
-  background-color: #F25C84;
-  color: #B65CF2;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
   border-radius: 18px;
   font-size: 30px;
   cursor: pointer;

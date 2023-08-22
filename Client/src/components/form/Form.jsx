@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { validation } from "./validation.js";
+import style from "./From.module.css";
 
 export default function Form({ login }) {
   const [userData, SetUserData] = useState({
@@ -23,36 +24,45 @@ export default function Form({ login }) {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">
-          Email:
+    <div className={style.formContainer}>
+      <form onSubmit={handleSubmit} className={style.loginForm}>
+        <h2 className={style.loginF}>LOGIN</h2>
+
+        <div className={style.logiConten}>
+          <label htmlFor="email" className={style.formLabel}>
+            Email
+          </label>
           <input
-            type="text"
+            type="email"
             id="email"
             value={userData.email}
             name="email"
             onChange={handleChange}
-            className={errors.email}
+            className={style.formInput}
           />
-        </label>
+          {errors.email && (
+            <p className={style.errorMessage}> {errors.email}</p>
+          )}
+        </div>
 
-        {errors.email && <p> {errors.email}</p>}
-
-        <label htmlFor="password">
-          Password:
+        <div className={style.logiConten}>
+          <label htmlFor="password" className={style.formLabel}>
+            Password
+          </label>
           <input
             type="password"
             id="password"
             value={userData.password}
             name="password"
             onChange={handleChange}
-            className={errors.password}
+            className={style.formInput}
           />
-        </label>
-        {errors.password && <p> {errors.password}</p>}
+          {errors.password && (
+            <p className={style.errorMessage}> {errors.password}</p>
+          )}
+        </div>
 
-        <button>Smbmit</button>
+        <button className={style.submitButton}>INICIAR</button>
       </form>
     </div>
   );
