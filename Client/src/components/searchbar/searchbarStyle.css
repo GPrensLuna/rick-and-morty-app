@@ -1,0 +1,44 @@
+:root {
+  --color-primary: #6C9BCF;
+  --color-danger: #FF0060;
+  --color-success: #1B9C85;
+  --color-warning: #F7D060;
+  --color-white: #fff;
+  --color-info-dark: #7d8da1;
+  --color-dark: #363949;
+  --color-light: rgba(132, 139, 200, 0.18);
+  --color-dark-variant: #677483;
+  --color-background: #f6f6f9;
+  --color-transparent: transparent;
+
+  --border: 2px solid rgba(255, 255, 255, .5);
+  --border--radius: 15px;
+  --backdrop: blur(20px);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  appearance: 0;
+  border: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.contenSearch  {
+color: var(--color-danger);
+display: flex;
+}
+
+.inputSearch {
+border: var(--border);
+border-radius: var(--border--radius);
+color: var(--color-dark);
+}
+
+.buttonSearch {
+background-color: var(--color-transparent);
+color: var(--color-success);
+font-size: 25px;
+}

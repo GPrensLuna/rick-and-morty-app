@@ -1,19 +1,47 @@
+:root {
+   --color-primary: #6C9BCF;
+   --color-danger: #FF0060;
+   --color-success: #1B9C85;
+   --color-warning: #F7D060;
+   --color-white: #fff;
+   --color-info-dark: #7d8da1;
+   --color-dark: #363949;
+   --color-light: rgba(132, 139, 200, 0.18);
+   --color-dark-variant: #677483;
+   --color-background: #f6f6f9;
+   --color-transparent: transparent;
+
+   --border: 2px solid rgba(255, 255, 255, .5);
+   --backdrop: blur(20px);
+}
+
+* {
+   margin: 0;
+   padding: 0;
+   outline: 0;
+   appearance: 0;
+   border: 0;
+   text-decoration: none;
+   box-sizing: border-box;
+}
+
 
 .nav{
-   top:0;
-   left: 0; 
-   width: 80%;
-   padding: 20px 100px;
-   border: 2px solid rgba(255, 255, 255, .5);
-   border-radius: 20px;
-   backdrop-filter: blur(20px);
-   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+
    display: flex;
-   justify-content: space-between;
-   align-items: center;
+   flex-direction: row;
+   background: var(--color-transparent);
+   backdrop-filter: var(--backdrop);
+   border: var(--border);
+   box-shadow: var(--box-shadow);
+   border-radius: 15px;
+   height: 9vh;
+   position: relative;
+   top: 0;
+   transition: all 0.3s ease;
  }
 
-@media (min-width: 500px) {
+   @media (min-width: 500px) {
    .nav {
       width: 80%;
       padding: 20px 30px;
@@ -26,9 +54,9 @@
       overflow: hidden;
       text-overflow: ellipsis;
    }
-}
+   }
 
-@media (min-width: 750px) {
+   @media (min-width: 750px) {
    .nav {
       width: 70%;
       padding: 20px 50px;
@@ -41,11 +69,11 @@
       overflow: hidden;
       text-overflow: ellipsis;
    }
-}
+   }
 
-@media (min-width: 1080px) {
+   @media (min-width: 1080px) {
    .nav {
-      width: 60%;
+      width: 90%;
       padding: 20px 100px;
    }
 
@@ -56,19 +84,18 @@
       overflow: hidden;
       text-overflow: ellipsis;
    }
-}
- .nav span {
-   color: aliceblue;
+   }
+   .nav span {
+   color: var(--color-white);
 
- }
+   }
 
- .nav span:hover {
-    color: rgb(39, 170, 45);
- }
- 
- nav a{
-    text-decoration: none;
-    color: inherit;
- }
- 
- 
+   .nav span:hover {
+      color: var(--color-success);
+   }
+
+   nav a{
+      text-decoration: none;
+      color: inherit;
+   }
+
