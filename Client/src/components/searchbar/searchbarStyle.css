@@ -29,16 +29,21 @@
 .contenSearch  {
 color: var(--color-danger);
 display: flex;
+height: 100%;
+width: 100%;
+
 }
 
 .inputSearch {
+width: 100%;
 border: var(--border);
 border-radius: var(--border--radius);
 color: var(--color-dark);
 }
 
 .buttonSearch {
-background-color: var(--color-transparent);
-color: var(--color-success);
 font-size: 25px;
+color: var(--color-success);
+padding-right: 10px;
+background-color: var(--color-transparent);
 }

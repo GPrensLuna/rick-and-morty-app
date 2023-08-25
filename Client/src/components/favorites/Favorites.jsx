@@ -1,17 +1,15 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../card/Card.jsx";
-//import styled from 'styled-components';
 import {
   orderCards,
   filterFav,
+  removeFav as removeFavGlobal,
 } from "../../redux/actions/actions.js";
-import { useState } from 'react';
+import { useState } from "react";
 import "./Favorites.css";
 
-
-
-const Favorites = () => {
+const Favorites = ({ onClose }) => {
   const [aux, setAux] = useState(false);
   const dispatch = useDispatch();
   const myFavorites = useSelector((state) => state.myFavorites);
@@ -23,6 +21,11 @@ const Favorites = () => {
 
   const handleFilter = (e) => {
     dispatch(filterFav(e.target.value));
+  };
+
+  const onCloseFav = (id) => {
+    dispatch(removeFavGlobal(id)); 
+    onClose(id);
   };
 
   return (
@@ -51,6 +54,7 @@ const Favorites = () => {
               origin={origin}
               gender={gender}
               image={image}
+              onClose={onCloseFav}
             />
           )
         )}
@@ -60,4 +64,3 @@ const Favorites = () => {
 };
 
 export default Favorites;
-

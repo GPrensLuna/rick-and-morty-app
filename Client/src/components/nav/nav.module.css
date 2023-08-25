@@ -1,3 +1,4 @@
+
 :root {
    --color-primary: #6C9BCF;
    --color-danger: #FF0060;
@@ -73,19 +74,23 @@
 
    @media (min-width: 1080px) {
    .nav {
+      justify-content: center;
       width: 90%;
       padding: 20px 100px;
    }
 
    .nav span {
-      font-size: 30px;
       margin: 5px;
-      white-space: nowrap;
       overflow: hidden;
+      padding-left: 5em;
+      font-size: 30px;
+      white-space: nowrap;
       text-overflow: ellipsis;
    }
    }
    .nav span {
+      height: 100%;
+      width: 100%;
    color: var(--color-white);
 
    }
@@ -94,7 +99,7 @@
       color: var(--color-success);
    }
 
-   nav a{
+   .nav a{
       text-decoration: none;
       color: inherit;
    }

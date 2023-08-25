@@ -46,16 +46,25 @@ function App() {
     navigate("/");
   }
 
-  async function onSearch(id) {
-    try {
-      const { data } = await axios(`${URL}/character/${id}`);
-      if (data.name) {
+async function onSearch(id) {
+  try {
+    const { data } = await axios(`${URL}/character/${id}`);
+    if (data.name) {
+      const isCharacterInList = characters.some(
+        (character) => character.id === data.id
+      );
+
+      if (!isCharacterInList) {
         setCharacters((oldChars) => [...oldChars, data]);
+      } else {
+        window.alert("Este personaje ya está en la lista.");
       }
-    } catch (error) {
-      window.alert(error.message);
     }
+  } catch (error) {
+    window.alert(error.message);
   }
+}
+
 
 function onClose(id) {
     const newCharacters = characters.filter(
@@ -80,7 +89,7 @@ function onClose(id) {
         {/* Ruta para la página "Acerca de" */}
         <Route path="/detail/:id" element={<Detail />}></Route>{" "}
         {/* Ruta para la página de detalles de un personaje */}
-        <Route path="/favorites" element={<Favorites />}></Route>{" "}
+        <Route path="/favorites" element={<Favorites onClose={onClose}/>}></Route>{" "}
         {/* Ruta para la página de favoritos */}
         <Route path="*" element={<Error404 />}></Route>{" "}
         {/* Ruta para cualquier otra ruta no definida */}

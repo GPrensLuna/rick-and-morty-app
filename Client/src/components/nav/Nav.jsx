@@ -10,28 +10,27 @@ class Nav extends React.Component {
 
   render() {
     return (
-      <div className="sidebar">
-        <nav className={style.nav}>
-          <NavLink to={"/home"}>
-            <span>Home</span>
-          </NavLink>
+      <nav className={style.nav}>
+        <NavLink to={"/home"}>
+          <span>Home</span>
+        </NavLink>
 
-          <NavLink to={"/favorites"}>
-            <span>Favorite</span>
-          </NavLink>
+        <NavLink to={"/favorites"}>
+          <span>Favorite</span>
+        </NavLink>
 
-          <NavLink to={"/about"}>
-            <span>About</span>
-          </NavLink>
+        <NavLink to={"/about"}>
+          <span>About</span>
+        </NavLink>
 
+        <span>
           <SearchBar onSearch={this.props.onSearch} />
+        </span>
 
-          <NavLink to={"/"}>
-            <span>Cerrar</span>
-          </NavLink>
-
-        </nav>
-      </div>
+        <NavLink to={"/"}>
+          <span>Cerrar</span>
+        </NavLink>
+      </nav>
     );
   }
 }

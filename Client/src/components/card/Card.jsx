@@ -52,6 +52,26 @@ export function Card({
   return (
     <div className={style.card}>
       <div className={style.back}>
+        <div className={style.contButton}>
+          <div className={style.buttFav}>
+            {isFav ? (
+              <button className={style.button} onClick={handleFavorite}>
+                ❤️
+              </button>
+            ) : (
+              <button className={style.buttonAc} onClick={handleFavorite}>
+                🤍
+              </button>
+            )}
+          </div>
+
+          <div className={style.buttOnc}>
+            <button className={style.buttonAc} onClick={() => onClose(id)}>
+              X
+            </button>
+          </div>
+        </div>
+
         <img className={style.pjImg} src={image} alt={name} />
 
         <Link to={`/detail/${id}`}>
@@ -61,37 +81,34 @@ export function Card({
         </Link>
 
         <div className={style.attribute}>
-          <span>ID:</span>
-          <p>{id}</p>
+          <h4>
+            <strong>ID:</strong> {id}
+          </h4>
         </div>
 
         <div className={style.attribute}>
-          <span>Status:</span>
-          <p>{status}</p>
+          <h4>
+            <strong>Status:</strong> {status}
+          </h4>
         </div>
 
         <div className={style.attribute}>
-          <span>Species:</span>
-          <p>{species}</p>
+          <h4>
+            <strong>Species:</strong> {species}
+          </h4>
         </div>
 
         <div className={style.attribute}>
-          <span>Gender:</span>
-          <p>{gender}</p>
+          <h4>
+            <strong>Gender:</strong> {gender}
+          </h4>
         </div>
 
         <div className={style.attribute}>
-          <span>Origin:</span>
-          <p>{origin}</p>
+          <h4>
+            <strong>Origin:</strong> {origin}
+          </h4>
         </div>
-
-        {isFav ? (
-          <button onClick={handleFavorite}>❤️</button>
-        ) : (
-          <button onClick={handleFavorite}>🤍</button>
-        )}
-
-        <button onClick={() => onClose(id)}>X</button>
       </div>
     </div>
   );
@@ -100,17 +117,17 @@ export function Card({
 const mapDispatchToProps = (dispatch) => {
   return {
     addFav: (character) => {
-      dispatch(addFav(character)); // Llamar a la acción addFav y pasar el personaje como argumento
+      dispatch(addFav(character)); 
     },
     removeFav: (id) => {
-      dispatch(removeFav(id)); // Llamar a la acción removeFav y pasar el ID del personaje como argumento
+      dispatch(removeFav(id)); 
     },
   };
 };
 
 const mapStateToProps = (state) => {
   return {
-    myFavorites: state.myFavorites, // Mapear el estado myFavorites de Redux a las propiedades del componente
+    myFavorites: state.myFavorites, 
   };
 };
 
