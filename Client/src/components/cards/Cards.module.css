@@ -1,10 +1,10 @@
 .card{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
     width: 90vw;
+    display: flex;
     position: relative;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
  
 }
 
