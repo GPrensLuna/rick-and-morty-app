@@ -10,6 +10,9 @@ import { Detail } from "./components/Detail/Detail.jsx";
 import Error404 from "./components/Error404/Error404.jsx";
 import Form from "./components/form/Form.jsx";
 import Favorites from "./components/favorites/Favorites.jsx";
+import Modal from "./components/Modal/Modal.jsx"; // Importa el componente Modal
+
+
 
 function App() {
   const { pathname } = useLocation();
@@ -22,6 +25,10 @@ function App() {
   }, [access]);
 
   const URL = "http://localhost:3001/rickandmorty/";
+
+  const [isCharacterExistsModalOpen, setIsCharacterExistsModalOpen] =
+    useState(false);
+
 
   async function login(userData) {
     const { email, password } = userData;
@@ -57,13 +64,14 @@ async function onSearch(id) {
       if (!isCharacterInList) {
         setCharacters((oldChars) => [...oldChars, data]);
       } else {
-        window.alert("Este personaje ya está en la lista.");
+        setIsCharacterExistsModalOpen(true); 
       }
     }
   } catch (error) {
     window.alert(error.message);
   }
 }
+
 
 
 function onClose(id) {
@@ -89,12 +97,17 @@ function onClose(id) {
         {/* Ruta para la página "Acerca de" */}
         <Route path="/detail/:id" element={<Detail />}></Route>{" "}
         {/* Ruta para la página de detalles de un personaje */}
-        <Route path="/favorites" element={<Favorites onClose={onClose}/>}></Route>{" "}
+        <Route
+          path="/favorites"
+          element={<Favorites onClose={onClose} />}
+        ></Route>{" "}
         {/* Ruta para la página de favoritos */}
         <Route path="*" element={<Error404 />}></Route>{" "}
         {/* Ruta para cualquier otra ruta no definida */}
       </Routes>
-    </div>
+
+
+        </div>
   );
 }
 
