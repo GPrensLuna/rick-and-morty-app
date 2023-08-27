@@ -44,22 +44,6 @@ function App() {
     navigate("/");
   }
 
-  fetch("https://rick-and-morty-app-113d.onrender.com")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("La solicitud no se pudo completar.");
-      }
-      return response.json(); // Esto convierte la respuesta en un objeto JSON si es una respuesta JSON
-    })
-    .then((data) => {
-      // Aquí puedes trabajar con los datos que obtuviste
-      console.log(data);
-    })
-    .catch((error) => {
-      // Manejo de errores en caso de que la solicitud falle
-      console.error("Error:", error);
-    });
-
   async function onSearch(id) {
     try {
       const { data } = await axios(`${URL}/character/${id}`);

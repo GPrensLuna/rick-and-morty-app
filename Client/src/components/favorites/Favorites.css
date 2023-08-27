@@ -16,21 +16,17 @@
     --border--radius: 15px;
 }
 
-
-.contenFil{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.contenFil {
+    width: 700px;
+    height: 70px;
 }
 
 .contenOp {
-    width: 500px;
-    height: 80px;
-    margin: 10px;
+    width: 100%;
+    margin: 4% auto;
     padding: 15px;
     border: var(--border);
     display: flex;
-    justify-content: center;
     transition: all 0.3s ease;
     border-radius: 15px;
     backdrop-filter: var(--backdrop);
@@ -52,4 +48,53 @@
 .comtemFav { 
     display: flex;
     flex-wrap: wrap;
+    margin: 0 60px;
+}
+
+@media (min-width: 400px) and (max-width: 749px) {
+    .contenOp {
+        width: 70%;
+        height: 100%;
+        padding: 20px 30px;
+        justify-content: center;
+    }
+
+}
+
+@media (min-width: 750px) and (max-width: 1000px) {
+    .contenOp {
+        width: 60%;
+        height: 100%;
+        padding: 20px 30px;
+        justify-content: center;
+    }
+
+}
+
+@media (min-width: 1000px) and (max-width: 1249px) {
+    .contenOp {
+        width: 40%;
+        height: 100%;
+        padding: 20px 50px;
+        justify-content: center;
+    }
+        .contenFil {
+            width: 1250px;
+            height: 80px;
+        }
+
+}
+
+@media (min-width: 1250px) {
+    .contenOp {
+        width: 30%;
+        height: 100%;
+        padding: 20px 30px;
+        justify-content: center;
+    }
+
+         .contenFil {
+             width: 1650px;
+             height: 80px;
+         }
 }
