@@ -19,7 +19,7 @@ function App() {
     !access && navigate("/"); // Redirigir al usuario a la página de inicio de sesión si no ha iniciado sesión
   }, [access]);
 
-  const URL = "https://rick-and-morty-app-113d.onrender.com";
+  const URL = "http://localhost:3001/rickandmorty/";
 
   async function login(userData) {
     const { email, password } = userData;
@@ -43,6 +43,22 @@ function App() {
     setAccess(false);
     navigate("/");
   }
+
+  fetch("https://rick-and-morty-app-113d.onrender.com")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("La solicitud no se pudo completar.");
+      }
+      return response.json(); // Esto convierte la respuesta en un objeto JSON si es una respuesta JSON
+    })
+    .then((data) => {
+      // Aquí puedes trabajar con los datos que obtuviste
+      console.log(data);
+    })
+    .catch((error) => {
+      // Manejo de errores en caso de que la solicitud falle
+      console.error("Error:", error);
+    });
 
   async function onSearch(id) {
     try {
