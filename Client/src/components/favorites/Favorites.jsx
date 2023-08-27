@@ -29,7 +29,7 @@ const Favorites = ({ onClose }) => {
   };
 
   return (
-    <div className="conten">
+    <div className="contenFil">
       <div className="contenOp">
         <select onChange={handleOrder}>
           <option value="A">Ascendente</option>
@@ -42,6 +42,9 @@ const Favorites = ({ onClose }) => {
           <option value="unknown">Unknown</option>
         </select>
       </div>
+
+      <div className="comtemFav">
+
       <>
         {myFavorites?.map(
           ({ id, name, status, species, gender, origin, image }) => (
@@ -55,10 +58,11 @@ const Favorites = ({ onClose }) => {
               gender={gender}
               image={image}
               onClose={onCloseFav}
-            />
-          )
-        )}
+              />
+              )
+              )}
       </>
+              </div>
     </div>
   );
 };

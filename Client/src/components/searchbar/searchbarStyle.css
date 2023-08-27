@@ -15,20 +15,6 @@
   --backdrop: blur(20px);
 }
 
-* {
-  margin: 0;
-  border: 0;
-  padding: 0;
-  outline: 0;
-  appearance: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-}
-
-.contenSearch  {
-  display: flex;
-}
-
 .inputSearch {
   color: var(--color-background);
   border: none;
